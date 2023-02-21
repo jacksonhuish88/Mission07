@@ -6,18 +6,23 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Mission07.Models
 {
-    public class HomeControllerModel
+    public class Movie
     {
         [Key]
         [Required]
         public int MovieId { get; set; }
+
+        // FK Relationship
         [Required]
-        public string category { get; set; }
-        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+
+        [Required(ErrorMessage = "Enter a Title")]
         public string title { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter a Year")]
         public int year { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Enter a Director")]
         public string director { get; set; }
         [Required]
         public string rating { get; set; }

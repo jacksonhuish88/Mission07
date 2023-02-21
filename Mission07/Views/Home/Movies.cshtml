@@ -2,27 +2,24 @@
     ViewData["Title"] = "Movies";
 }
 
-@model Mission07.Models.HomeControllerModel ;
+@model Mission07.Models.Movie ;
 
 <h1>@ViewData["Title"]</h1>
 <br />
 <form method="post">
     <label>Category</label>
-    <select id="category" asp-for="category">
-        <option value="Comedy">Comedy</option>
-        <option value="Drama">Drama</option>
-        <option value="Family">Family</option>
-        <option value="Horror/Suspense">Horror/Suspense</option>
-        <option value="Miscellaneous">Miscellaneous</option>
-        <option value="Television">Television</option>
-        <option value="VHS">VHS</option>
+    <select id="category" asp-for="CategoryId">
+        @foreach (Category i in ViewBag.Categories)
+            {
+                <option value="@i.CategoryId">@i.CategoryType</option>
+            }
     </select>
     <br />
     <label>Title</label>
     <input type="text" id="title" asp-for="title" />
     <br />
     <label>Year</label>
-    <input type="number" id="year" asp-for="year" />
+    <input type="number" id="year" asp-for="year"/>
     <br />
     <label>Director</label>
     <input type="text" id="director" asp-for="director" />

@@ -14,15 +14,28 @@ namespace Mission07.Models
             // Leave blank for now
         }
 
-        public DbSet<HomeControllerModel> Movies { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
+
+        // Seeding the Data
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            mb.Entity<HomeControllerModel>().HasData(
-                new HomeControllerModel
+            mb.Entity<Category>().HasData(
+                new Category { CategoryId = 1, CategoryType = "Comedy"},
+                new Category { CategoryId = 2, CategoryType = "Drama" },
+                new Category { CategoryId = 3, CategoryType = "Family" },
+                new Category { CategoryId = 4, CategoryType = "Horror / Suspense" },
+                new Category { CategoryId = 5, CategoryType = "Miscellaneous" },
+                new Category { CategoryId = 6, CategoryType = "Television" },
+                new Category { CategoryId = 7, CategoryType = "VHS" }
+            );
+
+            mb.Entity<Movie>().HasData(
+                new Movie
                 {
                     MovieId = 1,
-                    category = "Action",
+                    CategoryId = 2,
                     title = "Gladiator",
                     year = 2000,
                     director = "Ridley Scott",
@@ -30,20 +43,20 @@ namespace Mission07.Models
                     edited = false,
 
                 },
-                new HomeControllerModel
+                new Movie
                 {
                     MovieId = 2,
-                    category = "Action",
+                    CategoryId = 2,
                     title = "American Sniper",
                     year = 2014,
                     director = "Clint Eastwood",
                     rating = "R",
                     edited = false,
                 },
-                new HomeControllerModel
+                new Movie
                 {
                     MovieId = 3,
-                    category = "Action",
+                    CategoryId = 3,
                     title = "The Batman",
                     year = 2022,
                     director = "Matt Reeves",
